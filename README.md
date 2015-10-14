@@ -5,6 +5,9 @@ This bundle adds a button to the top of NodeCG dashboard that enables a user to 
 administrator via Pushover. By default, this notification will appear immediately on the sysadmin's phone, 
 playing a sound and triggering a vibration every 30 seconds until it is acknowledged.
 
+## Demo
+<img src="demo.gif?raw=true"/>
+
 ## Installation
 - Install to `nodecg/bundles/lfg-omega13`.
 - [Sign up for a Pushover account](https://pushover.net/login).
