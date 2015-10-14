@@ -33,8 +33,9 @@
     span.style.marginLeft = '4px';
 
     var button = document.createElement('paper-button');
-    button.style.backgroundColor = '#C9513E';
-    button.style.padding = '0.7em 0.57em';
+    button.classList.add('layout', 'horizontal', 'center');
+    button.style.backgroundColor = '#007070;';
+    button.style.padding = '0.5em 0.8em';
     button.raised = true;
     button.appendChild(icon);
     button.appendChild(span);
