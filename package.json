@@ -28,14 +28,14 @@
     "dashboardPanels": [
       {
         "name": "omega13",
-        "title": "Request Assistance",
+        "title": "Request Help",
         "width": 2,
         "headerColor": "#564573",
         "file": "omega13.html"
       },
       {
         "name": "confirm-help",
-        "title": "Confirm Assistance Request",
+        "title": "Confirm Help Request",
         "width": 3,
         "file": "dialogs/confirm_help.html",
         "dialog": true

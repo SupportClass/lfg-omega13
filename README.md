@@ -28,9 +28,9 @@ Only applies when `priority` is `2`.
 Only applies when `priority` is `2`.
 
 ## Usage
-- Open the dashboard and locate the "Request Assistance" panel. It's the one with a big red button on it.
+- Open the dashboard and locate the "Request Help" panel. It's the one with a big red button on it.
 - (Optional) Enter a description of the issue.
-- Click "Request Assistance" and confirm the request in the dialog that pops up.
+- Click "Request Help" and confirm the request in the dialog that pops up.
 This will immediately dispatch the notification.
 
 ## Troubleshooting
