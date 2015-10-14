@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="components/paper-button/paper-button.html">
+</head>
+<body>
+<p>Are you sure you wish to send a request for urgent assistance?</p>
+
+<p>This will immediately send a persistent notification to all staff that will not stop until they acknowledge it.</p>
+
+<div class="buttons">
+    <paper-button class="nodecg-danger" id="confirm" dialog-confirm autofocus>Yes, I need assistance</paper-button>
+    <paper-button dialog-dismiss>No, I'm alright</paper-button>
+</div>
+
+<script>
+    document.getElementById('confirm').addEventListener('click', function() {
+        var panelFrame = window.top.document.querySelector('iframe[src="/panel/lfg-omega13/omega13"]');
+        var messageEl = panelFrame.contentWindow.document.getElementById('message');
+        nodecg.sendMessage('help', messageEl.value);
+        messageEl.value = '';
+    }, false);
+</script>
+</body>
+</html>

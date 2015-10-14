@@ -1,0 +1,45 @@
+{
+  "name": "lfg-omega13",
+  "version": "0.0.0",
+  "description": "A big red button that sends a very aggressive phone notification.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://lange@github.com/SupportClass/lfg-omega13.git"
+  },
+  "keywords": [
+    "nodecg",
+    "alert",
+    "notification",
+    "emergency",
+    "urgent",
+    "push",
+    "maintenance",
+    "on-call",
+    "support"
+  ],
+  "author": "Alex Van Camp <email@alexvan.camp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SupportClass/lfg-omega13/issues"
+  },
+  "homepage": "https://github.com/SupportClass/lfg-omega13#readme",
+  "nodecg": {
+    "compatibleRange": "~0.7.0",
+    "dashboardPanels": [
+      {
+        "name": "omega13",
+        "title": "Request Assistance",
+        "width": 2,
+        "headerColor": "#564573",
+        "file": "omega13.html"
+      },
+      {
+        "name": "confirm-help",
+        "title": "Confirm Assistance Request",
+        "width": 3,
+        "file": "dialogs/confirm_help.html",
+        "dialog": true
+      }
+    ]
+  }
+}
