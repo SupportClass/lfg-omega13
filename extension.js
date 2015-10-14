@@ -20,7 +20,7 @@ module.exports = function(nodecg) {
         return;
     }
 
-    nodecg.listenFor('help', function(message) {
+    nodecg.listenFor('help', function(message, cb) {
         request.post({
             url: 'https://api.pushover.net/1/messages.json',
             body: querystring.stringify({
@@ -34,7 +34,8 @@ module.exports = function(nodecg) {
             })
         }, function(err, res, body) {
             if (err) {
-                nodecg.log.err(err.body);
+                nodecg.log.err(err.stack);
+                cb(false);
                 return;
             }
 
@@ -43,18 +44,21 @@ module.exports = function(nodecg) {
                 json = JSON.parse(body);
             } catch(e) {
                 nodecg.log.error('Could not parse response to JSON:', e.stack);
+                cb(false);
                 return;
             }
 
             if (json.status !== 1) {
-                console.log(typeof json.status);
                 if (json.errors) {
-                    json.errors.forEach(function(error) {
-                        nodecg.log.error(error);
-                    });
+                    var resErrString = json.errors.join('. ');
+                    nodecg.log.error(resErrString);
+                    cb(false);
                 } else {
                     nodecg.log.error('Unknown error:', json);
+                    cb(false);
                 }
+            } else {
+                cb(true);
             }
         });
     });

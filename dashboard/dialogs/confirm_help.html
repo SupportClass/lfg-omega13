@@ -21,6 +21,7 @@
 
 <script>
     var messageEl = document.getElementById('message');
+    var toast = window.top.document.getElementById('toast');
     var dialog = window.top.document.getElementById('lfg-omega13_confirm-help');
     var toolbar = window.top.document.getElementById('ncg-main-toolbar');
     var title = toolbar.querySelector('.title');
@@ -32,7 +33,7 @@
     span.innerHTML = 'Request Help';
     span.style.marginLeft = '4px';
 
-    var button = document.createElement('paper-button');
+    var button = window.top.document.createElement('paper-button');
     button.classList.add('layout', 'horizontal', 'center');
     button.style.backgroundColor = '#007070';
     button.style.padding = '0.5em 0.8em';
@@ -46,8 +47,16 @@
     title.parentNode.insertBefore(button, title.nextSibling);
 
     document.getElementById('confirm').addEventListener('click', function() {
-        nodecg.sendMessage('help', messageEl.value);
-        messageEl.value = '';
+        nodecg.sendMessage('help', messageEl.value, function(success) {
+            if (success) {
+                toast.text = 'Help request successfully sent!';
+                toast.show();
+                messageEl.value = '';
+            } else {
+                toast.text = 'Failed to send help request! Please contact a sysadmin directly.';
+                toast.show();
+            }
+        });
     }, false);
 </script>
 </body>
