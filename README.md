@@ -1,7 +1,7 @@
 # lfg-omega13
 This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
-This bundle adds a panel to the NodeCG dashboard that enables a user to send an urgent notification to the system
+This bundle adds a button to the top of NodeCG dashboard that enables a user to send an urgent notification to the system
 administrator via Pushover. By default, this notification will appear immediately on the sysadmin's phone, 
 playing a sound and triggering a vibration every 30 seconds until it is acknowledged.
 
