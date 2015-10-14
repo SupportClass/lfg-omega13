@@ -5,11 +5,14 @@
     <title></title>
     <script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-input/paper-textarea.html">
 </head>
 <body>
 <p>Are you sure you wish to send a request for urgent assistance?</p>
 
 <p>This will immediately send a persistent notification to all staff that will not stop until they acknowledge it.</p>
+
+<paper-textarea id="message" label="(Optional) Enter a description of the issue"></paper-textarea>
 
 <div class="buttons">
     <paper-button class="nodecg-danger" id="confirm" dialog-confirm autofocus>Yes, I need assistance</paper-button>
@@ -17,9 +20,30 @@
 </div>
 
 <script>
+    var messageEl = document.getElementById('message');
+    var dialog = window.top.document.getElementById('lfg-omega13_confirm-help');
+    var toolbar = window.top.document.getElementById('ncg-main-toolbar');
+    var title = toolbar.querySelector('.title');
+
+    var icon = window.top.document.createElement('iron-icon');
+    icon.icon = 'communication:call';
+
+    var span = window.top.document.createElement('span');
+    span.innerHTML = 'Request Help';
+    span.style.marginLeft = '4px';
+
+    var button = document.createElement('paper-button');
+    button.style.backgroundColor = '#C9513E';
+    button.raised = true;
+    button.appendChild(icon);
+    button.appendChild(span);
+    button.addEventListener('click', function() {
+        dialog.open();
+    });
+
+    title.parentNode.insertBefore(button, title.nextSibling);
+
     document.getElementById('confirm').addEventListener('click', function() {
-        var panelFrame = window.top.document.querySelector('iframe[src="/panel/lfg-omega13/omega13"]');
-        var messageEl = panelFrame.contentWindow.document.getElementById('message');
         nodecg.sendMessage('help', messageEl.value);
         messageEl.value = '';
     }, false);

@@ -27,13 +27,6 @@
     "compatibleRange": "~0.7.0",
     "dashboardPanels": [
       {
-        "name": "omega13",
-        "title": "Request Help",
-        "width": 2,
-        "headerColor": "#564573",
-        "file": "omega13.html"
-      },
-      {
         "name": "confirm-help",
         "title": "Confirm Help Request",
         "width": 3,

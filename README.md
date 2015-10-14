@@ -28,10 +28,9 @@ Only applies when `priority` is `2`.
 Only applies when `priority` is `2`.
 
 ## Usage
-- Open the dashboard and locate the "Request Help" panel. It's the one with a big red button on it.
-- (Optional) Enter a description of the issue.
-- Click "Request Help" and confirm the request in the dialog that pops up.
-This will immediately dispatch the notification.
+- Open the dashboard and click "REQUEST HELP" in the top toolbar.
+- (Optional) Enter a description of the issue in the dialog that pops up.
+- Confirm or deny the help request. Confirming will immediately dispatch the notification.
 
 ## Troubleshooting
 Check the NodeCG console output, it should inform you of any configuration or API errors.
