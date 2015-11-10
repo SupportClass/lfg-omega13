@@ -6,8 +6,7 @@ var querystring = require('querystring');
 module.exports = function(nodecg) {
     if (!nodecg.bundleConfig) {
         nodecg.log.error('cfg/lfg-omega13.json was not found. ' +
-            'This file is where the Pushover application and user keys are set. ' +
-            'Without those, the "now playing" graphic cannot function.');
+            'This file is where the Pushover application and user keys are set.');
         return;
     } if (typeof nodecg.bundleConfig.appToken === 'undefined') {
         nodecg.log.error('"appToken" is not defined in cfg/lfg-omega13.json! ' +
