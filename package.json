@@ -31,7 +31,17 @@
         "title": "Confirm Help Request",
         "width": 3,
         "file": "dialogs/confirm_help.html",
-        "dialog": true
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "Yes, I need help",
+            "type": "confirm"
+          },
+          {
+            "name": "No, I'm okay",
+            "type": "dismiss"
+          }
+        ]
       }
     ]
   }

@@ -14,11 +14,6 @@
 
 <paper-textarea id="message" label="(Optional) Enter a description of the issue"></paper-textarea>
 
-<div class="buttons">
-    <paper-button class="nodecg-danger" id="confirm" dialog-confirm autofocus>Yes, I need assistance</paper-button>
-    <paper-button dialog-dismiss>No, I'm alright</paper-button>
-</div>
-
 <script>
     var messageEl = document.getElementById('message');
     var toast = window.top.document.getElementById('toast');
@@ -46,7 +41,7 @@
 
     title.parentNode.insertBefore(button, title.nextSibling);
 
-    document.getElementById('confirm').addEventListener('click', function() {
+    document.addEventListener('dialog-confirmed', function() {
         nodecg.sendMessage('help', messageEl.value, function(success) {
             if (success) {
                 toast.text = 'Help request successfully sent!';
