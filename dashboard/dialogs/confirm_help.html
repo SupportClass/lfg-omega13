@@ -19,7 +19,6 @@
     var toast = window.top.document.getElementById('toast');
     var dialog = window.top.document.getElementById('lfg-omega13_confirm-help');
     var toolbar = window.top.document.getElementById('ncg-main-toolbar');
-    var title = toolbar.querySelector('.title');
 
     var icon = window.top.document.createElement('iron-icon');
     icon.icon = 'communication:call';
@@ -39,7 +38,8 @@
         dialog.open();
     });
 
-    title.parentNode.insertBefore(button, title.nextSibling);
+    var titleDom = Polymer.dom(toolbar).querySelector('.title');
+    Polymer.dom(toolbar).insertBefore(button, titleDom.nextSibling);
 
     document.addEventListener('dialog-confirmed', function() {
         nodecg.sendMessage('help', messageEl.value, function(success) {
