@@ -2,6 +2,7 @@
   "name": "lfg-omega13",
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#^1.0.8",
-    "paper-input": "PolymerElements/paper-input#^1.0.15"
+    "paper-input": "PolymerElements/paper-input#^1.0.15",
+    "nodecg-toast": "NodeCGElements/nodecg-toast#^0.1.2"
   }
 }
