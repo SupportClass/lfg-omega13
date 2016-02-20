@@ -32,16 +32,20 @@ module.exports = function (nodecg) {
 				return;
 			}
 
+			/* enslint-disable no-lonley-if */
 			if (json.status === 1) {
 				cb(true);
-			} if (json.errors) {
-				var resErrString = json.errors.join('. ');
-				nodecg.log.error(resErrString);
-				cb(false);
 			} else {
-				nodecg.log.error('Unknown error:', json);
-				cb(false);
+				if (json.errors) {
+					var resErrString = json.errors.join('. ');
+					nodecg.log.error(resErrString);
+					cb(false);
+				} else {
+					nodecg.log.error('Unknown error:', json);
+					cb(false);
+				}
 			}
+			/* enslint-enable no-lonley-if */
 		});
 	});
 };
