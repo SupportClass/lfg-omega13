@@ -1,7 +1,7 @@
 {
   "name": "lfg-omega13",
   "version": "0.1.1",
-  "description": "A big red button that sends a very aggressive phone notification.",
+  "description": "A big red button that sends a very aggressive phone and/or Slack notification.",
   "repository": {
     "type": "git",
     "url": "git+https://lange@github.com/SupportClass/lfg-omega13.git"
