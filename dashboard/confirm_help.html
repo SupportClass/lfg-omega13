@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -11,12 +11,22 @@
 
 	<p>Are you sure you wish to send a request for urgent assistance?</p>
 
-	<p>This will immediately send a persistent notification to all staff that will not stop until they acknowledge
-		it.</p>
+	<p id="notification-text">This will immediately send a persistent notification to all staff that will not stop until
+		they acknowledge it.</p>
 
 	<paper-textarea id="message" label="(Optional) Enter a description of the issue"></paper-textarea>
 
 	<script>
+		var notificationText = document.getElementById('notification-text');
+		var pushover = nodecg.bundleConfig.pushover;
+		var slack = nodecg.bundleConfig.slack;
+		if (pushover && pushover.enabled ) { // Pushover message has priority because it's more 'intense' than the Slack one.
+			notificationText.innerHTML = 'This will immediately send a persistent notification to all staff that will' +
+					'not stop until they acknowledge it.';
+		} else if (slack && slack.enabled) {
+			notificationText.innerHTML = 'This will immediately send a notification to the designated staff member(s).';
+		}
+		
 		var messageEl = document.getElementById('message');
 		var toast = document.getElementById('toast');
 		var dialog = window.top.document.getElementById('lfg-omega13_confirm-help');
