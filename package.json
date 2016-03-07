@@ -30,7 +30,7 @@
         "name": "confirm-help",
         "title": "Confirm Help Request",
         "width": 3,
-        "file": "dialogs/confirm_help.html",
+        "file": "confirm_help.html",
         "dialog": true,
         "dialogButtons": [
           {
