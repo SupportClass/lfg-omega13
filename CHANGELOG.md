@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/SupportClass/lfg-omega13/compare/v0.2.0...v0.2.1) (2016-03-07)
+
+
+### Bug Fixes
+
+* **dialog:** fix manifest path to dialog ([a7582d0](https://github.com/SupportClass/lfg-omega13/commit/a7582d0))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/SupportClass/lfg-omega13/compare/v0.1.1...v0.2.0) (2016-03-07)
 
