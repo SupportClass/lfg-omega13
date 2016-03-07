@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="components/paper-button/paper-button.html">
+	<link rel="import" href="components/paper-input/paper-textarea.html">
+	<link rel="import" href="components/nodecg-toast/nodecg-toast.html">
+</head>
+<body>
+	<nodecg-toast id="toast"></nodecg-toast>
+
+	<p>Are you sure you wish to send a request for urgent assistance?</p>
+
+	<p>This will immediately send a persistent notification to all staff that will not stop until they acknowledge
+		it.</p>
+
+	<paper-textarea id="message" label="(Optional) Enter a description of the issue"></paper-textarea>
+
+	<script>
+		var messageEl = document.getElementById('message');
+		var toast = document.getElementById('toast');
+		var dialog = window.top.document.getElementById('lfg-omega13_confirm-help');
+		var toolbar = window.top.document.getElementById('ncg-main-toolbar');
+
+		var icon = window.top.document.createElement('iron-icon');
+		icon.icon = 'communication:call';
+
+		var span = window.top.document.createElement('span');
+		span.innerHTML = 'Request Help';
+		span.style.marginLeft = '4px';
+
+		var button = window.top.document.createElement('paper-button');
+		button.classList.add('layout', 'horizontal', 'center');
+		button.style.backgroundColor = '#007070';
+		button.style.padding = '0.5em 0.8em';
+		button.raised = true;
+		button.appendChild(icon);
+		button.appendChild(span);
+		button.addEventListener('click', function () {
+			dialog.open();
+		});
+
+		var titleDom = Polymer.dom(toolbar).querySelector('.title');
+		if (titleDom.nextSibling.nodeName !== '#text') {
+			Polymer.dom(toolbar).insertBefore(button, titleDom.nextSibling);
+		} else {
+			Polymer.dom(toolbar).appendChild(button);
+		}
+
+		document.addEventListener('dialog-confirmed', function () {
+			nodecg.sendMessage('help', messageEl.value, function (success) {
+				console.log('response success?', success);
+				if (success) {
+					toast.text = 'Help request successfully sent!';
+					toast.show();
+					console.log('showing toast', toast);
+					messageEl.value = '';
+				} else {
+					toast.text = 'Failed to send help request! Please contact a sysadmin directly.';
+					toast.show();
+				}
+			});
+		}, false);
+	</script>
+</body>
+</html>
