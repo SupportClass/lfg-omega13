@@ -1,27 +1,27 @@
 'use strict';
 
-var request = require('request');
-var querystring = require('querystring');
+const request = require('request');
+const querystring = require('querystring');
 
 module.exports = function (nodecg) {
 	if (!nodecg.bundleConfig) {
 		throw new Error('cfg/lfg-omega13.json not found, this config file is required!');
 	}
 
-	nodecg.listenFor('help', function (message, cb) {
+	nodecg.listenFor('help', (message, cb) => {
 		if (nodecg.bundleConfig.pushover && nodecg.bundleConfig.pushover.enabled) {
 			request.post({
 				url: 'https://api.pushover.net/1/messages.json',
 				body: querystring.stringify({
 					token: nodecg.bundleConfig.appToken,
 					user: nodecg.bundleConfig.deliveryToken,
-					title: nodecg.config.host + ' requires assistance',
+					title: `${nodecg.config.host} requires assistance`,
 					message: message || 'No message provided.',
 					priority: nodecg.bundleConfig.priority || 2,
 					retry: nodecg.bundleConfig.retry || 30,
 					expire: nodecg.bundleConfig.expire || 3600
 				})
-			}, function (err, res, body) {
+			}, (err, res, body) => {
 				if (err) {
 					nodecg.log.error(err.stack);
 					cb(false);
@@ -69,7 +69,7 @@ module.exports = function (nodecg) {
 						}
 					]
 				})
-			}, function (err, res, body) {
+			}, (err, res, body) => {
 				if (err) {
 					nodecg.log.error(err.stack);
 					cb(false);

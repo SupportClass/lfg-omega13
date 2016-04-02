@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://lange@github.com/SupportClass/lfg-omega13.git"
   },
+  "scripts": {
+    "test": "npm run static",
+    "static": "eslint dashboard/**/*.js dashboard/**/*.html extension/**/*.js"
+  },
   "keywords": [
     "nodecg",
     "alert",
@@ -44,5 +48,12 @@
         ]
       }
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.2",
+    "eslint": "^2.6.0",
+    "eslint-config-xo": "^0.12.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-html": "^1.4.0"
   }
 }

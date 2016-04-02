@@ -1,4 +1,4 @@
-# lfg-omega13
+# lfg-omega13 [![Build Status](https://travis-ci.org/SupportClass/lfg-omega13.svg?branch=master)](https://travis-ci.org/SupportClass/lfg-omega13)
 This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
 This bundle adds a button to the top of NodeCG dashboard that enables a user to send an urgent notification to the system
