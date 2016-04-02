@@ -28,7 +28,7 @@ module.exports = function (nodecg) {
 					return;
 				}
 
-				var json;
+				let json;
 				try {
 					json = JSON.parse(body);
 				} catch (e) {
@@ -37,12 +37,12 @@ module.exports = function (nodecg) {
 					return;
 				}
 
-				/* enslint-disable no-lonley-if */
+				/* eslint-disable no-lonely-if */
 				if (json.status === 1) {
 					cb(true);
 				} else {
 					if (json.errors) {
-						var resErrString = json.errors.join('. ');
+						const resErrString = json.errors.join('. ');
 						nodecg.log.error(resErrString);
 						cb(false);
 					} else {
@@ -50,7 +50,7 @@ module.exports = function (nodecg) {
 						cb(false);
 					}
 				}
-				/* enslint-enable no-lonley-if */
+				/* eslint-enable no-lonely-if */
 			});
 		}
 		if (nodecg.bundleConfig.slack && nodecg.bundleConfig.slack.enabled) {
@@ -60,14 +60,12 @@ module.exports = function (nodecg) {
 				body: JSON.stringify({
 					username: nodecg.bundleConfig.slack.user,
 					channel: nodecg.bundleConfig.slack.destination,
-					attachments: [
-						{
-							"fallback": nodecg.config.host + ' requires assistance! ' + message,
-							"color": 'danger',
-							"title": 'Help requested by ' + nodecg.config.host,
-							"text": message || 'No message provided.'
-						}
-					]
+					attachments: [{
+						fallback: `${nodecg.config.host} requires assistance! ${message}`,
+						color: 'danger',
+						title: `Help requested by ${nodecg.config.host}`,
+						text: message || 'No message provided.'
+					}]
 				})
 			}, (err, res, body) => {
 				if (err) {
